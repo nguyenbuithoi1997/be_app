@@ -24,8 +24,13 @@ public class AuthController {
 	}
 
 	@PostMapping(ApiPath.REGISTER)
-	public String register() {
+	public String register(@RequestBody AuthenticationRequest request) {
 		return "44444"; //ResponseEntity.ok(service.register(request));
+	}
+
+	@GetMapping(ApiPath.REGISTER)
+	public String getRegister() {
+		return "444445"; //ResponseEntity.ok(service.register(request));
 	}
 
 //	@PostMapping(ApiPath.REGISTER)
