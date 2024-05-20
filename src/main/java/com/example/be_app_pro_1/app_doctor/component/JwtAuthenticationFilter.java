@@ -13,6 +13,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.example.be_app_pro_1.app_doctor.entity.TokenRepository;
 import com.example.be_app_pro_1.app_doctor.service._JwtService;
+import jakarta.jws.soap.SOAPBinding;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -33,7 +34,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			@NonNull HttpServletResponse response,
 			@NonNull FilterChain filterChain
 	) throws ServletException, IOException {
+		System.out.println("toi test ne");
+		System.out.println(request.getServletPath());
 		if (request.getServletPath().contains("/api/v1/auth")) {
+			System.out.println("1");
 			filterChain.doFilter(request, response);
 			return;
 		}
@@ -41,9 +45,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		final String jwt;
 		final String userEmail;
 		if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+			System.out.println("2");
 			filterChain.doFilter(request, response);
 			return;
 		}
+		System.out.println("3");
 		jwt = authHeader.substring(7);
 		userEmail = jwtService.extractUsername(jwt);
 		if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
