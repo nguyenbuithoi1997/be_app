@@ -21,7 +21,7 @@ public class AccessDeniedHandlerImpl implements AccessDeniedHandler {
 		response.setContentType("application/json"); // Set JSON content type
 
 		ObjectMapper mapper = new ObjectMapper(); // Use ObjectMapper for JSON serialization
-		ErrorResponse errorResponse = new ErrorResponse("AccessDeniedHandlerImpl2");
+		ErrorResponse errorResponse = new ErrorResponse("AccessDeniedHandlerImpl2", accessDeniedException.getMessage());
 		String jsonResponse = mapper.writeValueAsString(errorResponse);
 
 		response.setStatus(HttpStatus.FORBIDDEN.value());

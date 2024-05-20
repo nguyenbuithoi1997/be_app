@@ -21,7 +21,7 @@ public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
 		response.setContentType("application/json"); // Set JSON content type
 
 		ObjectMapper mapper = new ObjectMapper(); // Use ObjectMapper for JSON serialization
-		ErrorResponse errorResponse = new ErrorResponse("authentication_required");
+		ErrorResponse errorResponse = new ErrorResponse("authentication_required", authException.getMessage());
 		String jsonResponse = mapper.writeValueAsString(errorResponse);
 
 		response.setStatus(HttpStatus.UNAUTHORIZED.value());
