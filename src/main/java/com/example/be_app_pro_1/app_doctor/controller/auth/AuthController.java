@@ -18,20 +18,20 @@ public class AuthController {
 
 	private final AuthenticationService service;
 
-	@GetMapping(ApiPath.TEST)
+	@PostMapping(ApiPath.TEST)
 	public String test() {
 		return "Test";
 	}
 
-	@PostMapping(ApiPath.REGISTER)
-	public String register(@RequestBody AuthenticationRequest request) {
-		return "44444"; //ResponseEntity.ok(service.register(request));
-	}
-
-	@GetMapping(ApiPath.REGISTER)
-	public String getRegister() {
-		return "444445"; //ResponseEntity.ok(service.register(request));
-	}
+//	@PostMapping(ApiPath.REGISTER)
+//	public String register(@RequestBody AuthenticationRequest request) {
+//		return "44444"; //ResponseEntity.ok(service.register(request));
+//	}
+//
+//	@GetMapping(ApiPath.REGISTER)
+//	public String getRegister() {
+//		return "444445"; //ResponseEntity.ok(service.register(request));
+//	}
 
 //	@PostMapping(ApiPath.REGISTER)
 //	public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request) {
