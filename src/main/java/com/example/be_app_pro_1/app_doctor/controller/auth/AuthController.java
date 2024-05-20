@@ -12,7 +12,7 @@ import com.example.be_app_pro_1.app_doctor.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping(ApiPath.API + ApiPath.AUTH)
+@RequestMapping(value = ApiPath.API + ApiPath.AUTH)
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -23,7 +23,7 @@ public class AuthController {
 //		return "Test111111111";
 //	}
 
-	@PostMapping(ApiPath.TEST)
+	@PostMapping(value = ApiPath.TEST)
 	public String test() {
 		return "Test";
 	}
