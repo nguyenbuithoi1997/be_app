@@ -51,7 +51,7 @@ public class SecurityConfig {
 		http
 				.csrf(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(req ->
-						req.requestMatchers(POST,ApiPath.API + ApiPath.AUTH + ApiPath.TEST).permitAll()
+						req.requestMatchers(POST,"app_doctor/api/" + ApiPath.AUTH + ApiPath.TEST).permitAll()
 //								.requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), MANAGER.name())
 //								.requestMatchers(GET, "/api/v1/management/**").hasAnyAuthority(ADMIN_READ.name(), MANAGER_READ.name())
 //								.requestMatchers(POST, "/api/v1/management/**").hasAnyAuthority(ADMIN_CREATE.name(), MANAGER_CREATE.name())
