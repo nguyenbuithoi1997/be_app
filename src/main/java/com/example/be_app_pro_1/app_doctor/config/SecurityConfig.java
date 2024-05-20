@@ -55,6 +55,7 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 				.csrf(AbstractHttpConfigurer::disable)
+				.cors(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(req ->
 						req.requestMatchers(POST,ApiPath.API + ApiPath.AUTH + ApiPath.TEST).permitAll()
 								.requestMatchers(GET,ApiPath.API + ApiPath.AUTH + ApiPath.TEST).permitAll()
@@ -65,18 +66,18 @@ public class SecurityConfig {
 //								.requestMatchers(DELETE, "/api/v1/management/**").hasAnyAuthority(ADMIN_DELETE.name(), MANAGER_DELETE.name())
 								.anyRequest().permitAll()
 				)
-				.sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+//				.sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
 				.authenticationProvider(authenticationProvider)
 				.exceptionHandling(eh -> {
 					eh.authenticationEntryPoint(authenticationEntryPoint);
 					eh.accessDeniedHandler(accessDeniedHandler);
 				})
-				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-				.logout(logout ->
-						logout.logoutUrl("/api/v1/auth/logout")
-								.addLogoutHandler(logoutHandler)
-								.logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
-				);
+				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+//				.logout(logout ->
+//						logout.logoutUrl("/api/v1/auth/logout")
+//								.addLogoutHandler(logoutHandler)
+//								.logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
+//				);
 		return http.build();
 	}
 
