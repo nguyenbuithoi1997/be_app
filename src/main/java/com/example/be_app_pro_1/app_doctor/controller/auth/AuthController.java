@@ -18,10 +18,10 @@ public class AuthController {
 
 	private final AuthenticationService service;
 
-	@GetMapping(ApiPath.TEST)
-	public String test1() {
-		return "Test111111111";
-	}
+//	@GetMapping(ApiPath.TEST)
+//	public String test1() {
+//		return "Test111111111";
+//	}
 
 	@PostMapping(ApiPath.TEST)
 	public String test() {
