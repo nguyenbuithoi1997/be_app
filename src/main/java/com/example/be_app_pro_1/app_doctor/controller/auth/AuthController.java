@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.be_app_pro_1.app_doctor.constant.AppDoctorConstant.ApiPath;
@@ -23,7 +24,7 @@ public class AuthController {
 //		return "Test111111111";
 //	}
 
-	@PostMapping(value = ApiPath.TEST)
+	@RequestMapping(value = ApiPath.TEST, method = RequestMethod.POST)
 	public String test() {
 		return "Test";
 	}
