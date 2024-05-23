@@ -44,6 +44,7 @@ public class SecurityConfig {
 			ApiPath.API + ApiPath.AUTH + ApiPath.REGISTER,
 			ApiPath.API + ApiPath.AUTH + ApiPath.LOGIN,
 			ApiPath.API + ApiPath.AUTH + ApiPath.TEST,
+			ApiPath.TEST,
 			};
 	private final JwtAuthenticationFilter jwtAuthFilter;
 	private final AuthenticationProvider authenticationProvider;
@@ -57,14 +58,13 @@ public class SecurityConfig {
 				.csrf(AbstractHttpConfigurer::disable)
 				.cors(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(req ->
-						req.requestMatchers(POST,ApiPath.API + ApiPath.AUTH + ApiPath.TEST).permitAll()
-								.requestMatchers(GET,ApiPath.API + ApiPath.AUTH + ApiPath.TEST).permitAll()
+						req.requestMatchers(WHITE_LIST_URL).permitAll()
 //								.requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), MANAGER.name())
 //								.requestMatchers(GET, "/api/v1/management/**").hasAnyAuthority(ADMIN_READ.name(), MANAGER_READ.name())
 //								.requestMatchers(POST, "/api/v1/management/**").hasAnyAuthority(ADMIN_CREATE.name(), MANAGER_CREATE.name())
 //								.requestMatchers(PUT, "/api/v1/management/**").hasAnyAuthority(ADMIN_UPDATE.name(), MANAGER_UPDATE.name())
 //								.requestMatchers(DELETE, "/api/v1/management/**").hasAnyAuthority(ADMIN_DELETE.name(), MANAGER_DELETE.name())
-								.anyRequest().permitAll()
+								.anyRequest().authenticated()
 				)
 //				.sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
 				.authenticationProvider(authenticationProvider)

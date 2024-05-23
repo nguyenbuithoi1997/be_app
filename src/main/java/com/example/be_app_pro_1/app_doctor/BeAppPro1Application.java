@@ -8,6 +8,7 @@ public class BeAppPro1Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BeAppPro1Application.class, args);
+		System.out.println("Runnnnnnnnnnnnnn");
 	}
 
 }
