@@ -12,7 +12,9 @@ pipeline {
             }
             steps {
                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+                    sh 'echo Building and deploying the application...'
                     sh 'docker compose up -d --build'
+                    sh 'echo Finished building and deploying.'
                     sh 'docker compose push'
                 }
             }
