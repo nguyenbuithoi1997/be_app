@@ -7,7 +7,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    image: spring
+    image: nguyenbuithoi1997/spring
     ports:
       - "8082:8080"
     # restart: on-failure
@@ -17,24 +17,24 @@ services:
     networks:
       - java-app
 
-  mysql:
-    container_name: db_be_app
-    image: "mysql:8.0"
-    environment:
-      MYSQL_ROOT_PASSWORD: Thoai1412
-      MYSQL_DATABASE: db_example
-      MYSQL_USER: root
-      MYSQL_PASSWORD: Thoai1412
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3306"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 30s
-    volumes:
-      - be_app_java_mysql_data:/var/lib/mysql
-    networks:
-      - java-app
+#  mysql:
+#    container_name: db_be_app
+#    image: "mysql:8.0"
+#    environment:
+#      MYSQL_ROOT_PASSWORD: Thoai1412
+#      MYSQL_DATABASE: db_example
+#      MYSQL_USER: root
+#      MYSQL_PASSWORD: Thoai1412
+#    healthcheck:
+#      test: ["CMD", "curl", "-f", "http://localhost:3306"]
+#      interval: 10s
+#      timeout: 5s
+#      retries: 3
+#      start_period: 30s
+#    volumes:
+#      - be_app_java_mysql_data:/var/lib/mysql
+#    networks:
+#      - java-app
 
 volumes:
   be_app_java_mysql_data:
